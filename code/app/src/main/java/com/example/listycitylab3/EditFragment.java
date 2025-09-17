@@ -16,6 +16,15 @@ public class EditFragment extends DialogFragment {
     interface EditCityDialogListener {
         void editCity(City city, String name, String province);
     }
+
+    @NonNull
+    public static EditFragment newInstance(City city) {
+        Bundle args = new Bundle();
+        args.putSerializable("city", city);
+        EditFragment fragment = new EditFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
     private EditCityDialogListener listener;
     @Override
     public void onAttach(@NonNull Context context) {
@@ -26,6 +35,7 @@ public class EditFragment extends DialogFragment {
             throw new RuntimeException(context + " must implement EditCityDialogListener");
         }
     }
+
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {

@@ -57,15 +57,8 @@ public class MainActivity extends AppCompatActivity
         });
 
         cityList.setOnItemClickListener((adapterView, view, i, l) -> {
-            newInstance((City) adapterView.getItemAtPosition(i)).show(getSupportFragmentManager(), "Edit City");
+            EditFragment.newInstance((City) adapterView.getItemAtPosition(i)).show(getSupportFragmentManager(), "Edit City");
         });
     }
-    @NonNull
-    public static EditFragment newInstance(City city) {
-        Bundle args = new Bundle();
-        args.putSerializable("city", city);
-        EditFragment fragment = new EditFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
+
 }
